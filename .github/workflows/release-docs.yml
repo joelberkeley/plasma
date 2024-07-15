@@ -2,7 +2,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - uniform-em
+      - master
 
 env:
   PACK_DIR: /root/.pack
