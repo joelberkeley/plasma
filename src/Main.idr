@@ -32,7 +32,6 @@ product2 : (a, b : Nat) -> (rest : List Nat) ->
 product2 Z _ _ = Refl
 product2 (S aa) _ _ = ?product2Succ
 
-partial
 main : IO ()
 main = do
   let key = tensor {dtype = U64} 1

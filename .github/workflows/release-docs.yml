@@ -18,7 +18,7 @@ jobs:
         apt-get update && apt-get install -y curl python3-venv
         pack --no-prompt run plasma.ipkg
         python3 -m venv .venv
-        source .venv/bin/activate
+        . .venv/bin/activate
         pip install -r plot/requirements.txt -c plot/constraints.txt
         python3 plot/plot.py
         mkdir docs
