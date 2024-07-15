@@ -1,0 +1,16 @@
+[custom.all.plasma]
+type = "local"
+path = "."
+ipkg = "plasma.ipkg"
+test = "test/test.ipkg"
+
+[custom.all.plasma-test]
+type = "local"
+path = "test"
+ipkg = "test.ipkg"
+
+[custom.all.gnuplot]
+type   = "git"
+url    = "https://github.com/stefan-hoeck/idris2-gnuplot"
+commit = "latest:main"
+ipkg   = "gnuplot.ipkg"
