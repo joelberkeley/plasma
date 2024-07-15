@@ -1,0 +1,16 @@
+package plasma
+version = 0.1.0
+
+depends =
+    spidr
+  , pjrt-plugin-xla-cpu
+  , gnuplot
+
+modules =
+    EM
+  , Sampling
+
+main = Main
+
+executable = "plasma"
+sourcedir = "src"

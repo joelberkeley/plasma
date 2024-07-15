@@ -1,0 +1,33 @@
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - uniform-em
+
+env:
+  PACK_DIR: /root/.pack
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    container: ghcr.io/stefan-hoeck/idris2-pack
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build docs
+      run: |
+        apt-get update && apt-get install -y curl python3-venv
+        pack --no-prompt run plasma.ipkg
+        python3 -m venv .venv
+        source .venv/bin/activate
+        pip install -r plot/requirements.txt -c plot/constraints.txt
+        python3 plot/plot.py
+        mkdir docs
+        mv index.html docs/
+    - name: Upload docs
+      run: |
+        git config --global --add safe.directory "$GITHUB_WORKSPACE"
+        git add .
+        git config user.email "none"
+        git config user.name "none"
+        git commit -m "build documentation"
+        git push -f origin HEAD:gh-pages
